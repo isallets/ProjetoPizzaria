@@ -10,6 +10,14 @@ public class PizzaDao{
     public void adicionarPizza(Pizza p){
         databasePizza.add(p);
     }
+
+    public List<Pizza> getDatabasePizza() {
+        return databasePizza;
+    }
+
+    public void setDatabasePizza(List<Pizza> databasePizza) {
+        this.databasePizza = databasePizza;
+    }
     
     public Pizza listarPizza(int id){
         for(Pizza p : databasePizza){
@@ -49,5 +57,7 @@ public class PizzaDao{
         }
         return report;
     }
+    
+  
 
 }

@@ -26,7 +26,6 @@ public class PedidosDao{
             existeP.setPizzas(p.getPizzas());
             existeP.setCliente(p.getCliente());
             existeP.setTotal(p.getTotal());
-            existeP.setQuantidade(p.getQuantidade());
             
             return true;
         }
@@ -42,14 +41,13 @@ public class PedidosDao{
         return false;
     }
     
-    public String listarTodasPedidoss(){
+    public String listarTodasPedidos(){
         String report="";
         for(Pedidos p: databasePedidos){
             report+=p.getId()+"\n";
             report+=p.getPizzas()+"\n";
             report+=p.getCliente()+"\n";
             report+=p.getTotal()+"\n";
-            report+=p.getQuantidade()+"\n";
         }
         return report;
     }

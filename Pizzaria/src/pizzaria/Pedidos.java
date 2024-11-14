@@ -8,14 +8,12 @@ public class Pedidos {
     private List<Pizza> pizzas;
     private String cliente;
     private double total;
-    private int quantidade;
 
-    public Pedidos(int id, List<Pizza> pizzas, String cliente, double total, int quantidade) {
+    public Pedidos(int id, List<Pizza> pizzas, String cliente) {
         this.id = id;
         this.pizzas = pizzas;
         this.cliente = cliente;
-        this.total = total;
-        this.quantidade = quantidade;
+        this.total = calcularTotal();
     }
 
     public int getId() {
@@ -49,16 +47,8 @@ public class Pedidos {
     public void setTotal(double total) {
         this.total = total;
     }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
     
-    public double calcularTotal(){
+    public final double calcularTotal(){
         return pizzas.stream().mapToDouble(Pizza::getPreco).sum();
     }
 }
