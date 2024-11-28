@@ -11,6 +11,7 @@ import java.util.List;
         public static void main(String[] args) {
             PizzaDao pizzadao = new PizzaDao();
             PedidosDao pedidosdao = new PedidosDao();
+       
             
             //criar pizzas
             Pizza pizza1 = new PizzaCalabresa(2);
@@ -39,25 +40,23 @@ import java.util.List;
             System.out.println(pizzadao.listarTodasPizzas());
             */
             //criar cliente
-            Cliente cliente = new Cliente(1, "Carlos");
+            Cliente cliente1 = new Cliente(1, "Carlos");
             
+            Cliente cliente2 = new Cliente(2, "Roberto");
             //pedidos
-            Pedidos pedidos = new Pedidos(1);
-            
+            Pedidos pedidos1 = new Pedidos(1);    
             
             //criar pedidos
-            pedidos.adicionarCliente(cliente);
-            pedidos.adicionarPizza(pizza1);
-            pedidos.adicionarPizza(pizza2);
-            pedidosdao.adicionarPedidos(pedidos);
-            
+            pedidos1.adicionarCliente(cliente1);
+            pedidos1.adicionarPizza(pizza1);
+            pedidos1.adicionarPizza(pizza1);
+            pedidosdao.adicionarPedidos(pedidos1);
+
             //listar pedidos
             System.out.println("Lista de Pedidos: \n" + pedidosdao.listarTodasPedidos());
-        
-          
             /*
             //deletar pedidos
-            Pedidos pedidosSD=pedidosdao.listarPedidos(2);
+            Pedidos pedidosSD=pedidosdao.listarPedidos(1);
             
             if(pedidosdao.deletarPedidos(pedidosSD)){
                 System.out.println("Excluido com sucesso");
@@ -66,12 +65,13 @@ import java.util.List;
             else 
                 System.out.println("Exclusao nao realizada");
             
+            System.out.println("...."+ pedidosdao.listarTodasPedidos());
+            */
             //atualizar pedidos
-            System.out.println();
-            Pedidos pedidosUP = new Pedidos (1, Arrays.asList(pizza1, pizza3), "Carlos");
+            Pedidos pedidosUP = new Pedidos(1, pedidos1.getPizzas() , cliente2);
             pedidosdao.atualizaPedidos(pedidosUP);
             System.out.println(pedidosdao.listarTodasPedidos());
-*/
+
                 
         }
         

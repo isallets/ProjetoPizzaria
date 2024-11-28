@@ -13,8 +13,10 @@ public class Pedidos {
         this.id = id;
         this.pizzas = new ArrayList<>();
     }
-    public Pedidos(){
-        
+    public Pedidos(int id, List<Pizza> pizzas, Cliente cliente){
+        this.id = id;
+        this.pizzas = pizzas;
+        this.cliente = cliente;
     }
     
     public int getId() {
@@ -53,4 +55,11 @@ public class Pedidos {
     public void adicionarPizza(Pizza pizza){
         pizzas.add(pizza);
     }
+    
+    @Override
+    public String toString() {
+        return "\nPedido: " + id + ",\nPizzas:" + getPizzas()+", \nCliente:" + getCliente() + "\n\n";
+    }
+
+
 }
