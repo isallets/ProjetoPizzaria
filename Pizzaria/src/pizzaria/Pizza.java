@@ -1,17 +1,22 @@
 
 package pizzaria;
-
+/*
+@author Isabelle Lopes
+@author Isabelly Andrade
+*/
 public class Pizza {
     private int id;
-    private String sabor;
+    private String nome;
+    private String ingredientes;
     private double preco;
-    private String descricao;
+    private int quantidade;
 
-    public Pizza(int id, String sabor, double preco, String descricao) {
+    public Pizza(int id, String nome, String ingredientes, double preco, int quantidade) {
         this.id = id;
-        this.sabor = sabor;
+        this.nome = nome;
+        this.ingredientes = ingredientes;
         this.preco = preco;
-        this.descricao = descricao;
+        this.quantidade = quantidade;
     }
 
     public int getId() {
@@ -22,12 +27,20 @@ public class Pizza {
         this.id = id;
     }
 
-    public String getSabor() {
-        return sabor;
+    public String getNome() {
+        return nome;
     }
 
-    public void setSabor(String sabor) {
-        this.sabor = sabor;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(String ingredientes) {
+        this.ingredientes = ingredientes;
     }
 
     public double getPreco() {
@@ -37,16 +50,18 @@ public class Pizza {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-    
-    public String getDescricao() {
-        return descricao;
+
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setDescricao (String descricao) {
-        this.descricao = descricao;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
-      @Override
-    public String toString(){
-        return "Pizza: " + sabor;
+    
+    @Override
+    public String toString() {
+        return "\nPedido: " + id + ", \nSabor:" + getNome() + ", \nPreco:" + getPreco()+ ", \nQuantidade:"+ getQuantidade()+"\n\n";
     }
+
 }

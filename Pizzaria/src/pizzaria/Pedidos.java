@@ -1,21 +1,22 @@
 
 package pizzaria;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedidos {
     private int id;
     private List<Pizza> pizzas;
-    private String cliente;
-    private double total;
+    Cliente cliente;
 
-    public Pedidos(int id, List<Pizza> pizzas, String cliente) {
+    public Pedidos(int id) {
         this.id = id;
-        this.pizzas = pizzas;
-        this.cliente = cliente;
-        this.total = calcularTotal();
+        this.pizzas = new ArrayList<>();
     }
-
+    public Pedidos(){
+        
+    }
+    
     public int getId() {
         return id;
     }
@@ -32,23 +33,24 @@ public class Pedidos {
         this.pizzas = pizzas;
     }
 
-    public String getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-    
+  /*  
     public final double calcularTotal(){
         return pizzas.stream().mapToDouble(Pizza::getPreco).sum();
+    }
+    */
+    public void adicionarCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+    
+    public void adicionarPizza(Pizza pizza){
+        pizzas.add(pizza);
     }
 }
