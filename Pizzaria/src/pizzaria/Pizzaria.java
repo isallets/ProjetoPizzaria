@@ -1,6 +1,7 @@
 
 package pizzaria;
 
+import PizzariaDao.DiaTrabalhoDao;
 import PizzariaDao.PedidosDao;
 import PizzariaDao.PizzaDao;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
         public static void main(String[] args) {
             PizzaDao pizzadao = new PizzaDao();
             PedidosDao pedidosdao = new PedidosDao();
+            DiaTrabalhoDao diatrabalhodao = new DiaTrabalhoDao();
        
             
             //criar pizzas
@@ -71,8 +73,17 @@ import java.util.List;
             Pedidos pedidosUP = new Pedidos(1, pedidos1.getPizzas() , cliente2);
             pedidosdao.atualizaPedidos(pedidosUP);
             System.out.println(pedidosdao.listarTodasPedidos());
-
-                
+            
+            //cria um data
+            /*TEM QUE FAZER IGUAL AO DE ADICIONAR PEDIDOS - PRIMEIRO CRIA A DATA, E DEPOIS INCLUI O PEDIDO NA DATA
+             DiaTrabalho diaTrabalho1 = new DiaTrabalho(1);
+             
+             diatrabalhodao.adicionarDiaTrabalho(diaTrabalho1);
+             diaTrabalho1
+             
+             System.out.println("Lista de dias: \n" + diaTrabalho1.getDia());
+             
+             */
         }
         
 } 
