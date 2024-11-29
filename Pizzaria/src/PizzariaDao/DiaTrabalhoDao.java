@@ -1,6 +1,7 @@
 
 package PizzariaDao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import pizzaria.DiaTrabalho;
@@ -12,13 +13,21 @@ public class DiaTrabalhoDao {
     public void adicionarDiaTrabalho(DiaTrabalho d){
         databaseDiaTrabalho.add(d);
     }
-    
-    public DiaTrabalho listarDiaTrabalho(int id){
-        for(DiaTrabalho d : databaseDiaTrabalho){
-            if(d.getId()==id)
-                return d;
+    /*
+    public String listarDatas() {
+        for (DiaTrabalho dia : databaseDiaTrabalho) {
+            System.out.println("Data: " + dia.getData());
         }
         return null;
+    }
+    */
+    public List<LocalDate> listarDatas() {
+        List<LocalDate> datas = new ArrayList<>();
+        
+        for (DiaTrabalho data : databaseDiaTrabalho) {
+            datas.add(data.getData());
+        }
+        return datas;
     }
     /*
     public boolean atualizaDiaTrabalho(DiaTrabalho d){
@@ -31,23 +40,18 @@ public class DiaTrabalhoDao {
         }
         return false;
     }
+
     
-    public boolean deletarDiaTrabalho(DiaTrabalho d){
-        DiaTrabalho existeD=listarDiaTrabalho(d.getId());
-        if(existeP!=null){
-            databaseDiaTrabalho.remove(d);
-            return true;
-        }
-        return false;
+    public boolean deletarDiaTrabalho(DiaTrabalho d) {
+    return databaseDiaTrabalho.removeIf(dia -> dia.getId() == d.getId());
     }
-   */ 
-    public String listarTodasDiaTrabalho(){
+   */
+    public String listarTodosDiaTrabalho(){
         String report="";
         for(DiaTrabalho d: databaseDiaTrabalho){
-            report+=d.getId()+"\n";
             report+=d.getData()+"\n";
-            report+=d.getPedidos()+"\n";
         }
         return report;
     }
+    
 }

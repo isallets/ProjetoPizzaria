@@ -23,10 +23,10 @@ import java.util.List;
             pizzadao.adicionarPizza(pizza1);
             pizzadao.adicionarPizza(pizza2);
             
-            System.out.println("***Cardápio de Pizzas:***\n" + pizzadao.listarTodasPizzas());
+            System.out.println("***Cardápio de Pizzas***\n" + pizzadao.listarTodasPizzas());
             /*
             //deletar pizzas
-            System.out.println("***Exclua uma Pizza do Cardápio:***\n" + pizzadao.listarTodasPizzas());
+            System.out.println("***Exclua uma Pizza do Cardápio***\n" + pizzadao.listarTodasPizzas());
 
             Pizza pizzasDE=pizzadao.listarPizza(2);
       
@@ -36,7 +36,7 @@ import java.util.List;
             System.out.println("Exclusao nao realizada...");
             
             //atualizar pizzas
-            System.out.println("***Atualize uma Pizza do Cardápio:***\n" + pizzadao.listarTodasPizzas());
+            System.out.println("***Atualize uma Pizza do Cardápio***\n" + pizzadao.listarTodasPizzas());
 
             Pizza pizzaUP=new Pizza(1,"Pizza de Calabresa", "Molho de tomate, Mussarela, Calabresa e Cebola" , 30, 5);
             pizzadao.atualizaPizza(pizzaUP);
@@ -56,7 +56,7 @@ import java.util.List;
             pedidos1.adicionarPizza(pizza1);
             pedidosdao.adicionarPedidos(pedidos1);
             
-            pedidos2.adicionarCliente(cliente1);
+            pedidos2.adicionarCliente(cliente2);
             pedidos2.adicionarPizza(pizza2);
             pedidos2.adicionarPizza(pizza1);
             pedidosdao.adicionarPedidos(pedidos2);
@@ -65,9 +65,9 @@ import java.util.List;
             System.out.println("***Lista de Pedidos:*** \n" + pedidosdao.listarTodasPedidos());
             /*
             //deletar pedidos
-            Pedidos pedidosSD=pedidosdao.listarPedidos(1);
+            Pedidos pedidosDE=pedidosdao.listarPedidos(1);
             
-            if(pedidosdao.deletarPedidos(pedidosSD)){
+            if(pedidosdao.deletarPedidos(pedidosDE)){
                 System.out.println("Excluido com sucesso");
                 System.out.println(pedidosdao.listarTodasPedidos());
             }
@@ -79,24 +79,43 @@ import java.util.List;
             //atualizar pedidos
             Pedidos pedidosUP = new Pedidos(1, pedidos2.getPizzas() , cliente2);
             pedidosdao.atualizaPedidos(pedidosUP);
-            System.out.println("***Pedido atualizado:***\n" + pedidosdao.listarPedidos(1));
+            System.out.println("***Pedido atualizado***\n" + pedidosdao.listarPedidos(1));
             */
             //cria um data
-            //TEM QUE FAZER IGUAL AO DE ADICIONAR PEDIDOS - PRIMEIRO CRIA A DATA, E DEPOIS INCLUI O PEDIDO NA DATA
-            //LocalDate novaData1 = LocalDate.of(2024, 11, 28);            
+            //TEM QUE FAZER IGUAL AO DE ADICIONAR PEDIDOS - PRIMEIRO CRIA A DATA, E DEPOIS INCLUI O PEDIDO NA DATA           
+            LocalDate novaData1 = LocalDate.of(2024, 11, 28);
+            LocalDate novaData2 = LocalDate.of(2024, 11, 29);
 
             
-            DiaTrabalho diaTrabalho1 = new DiaTrabalho(20241128);
-            
-            
+            DiaTrabalho diaTrabalho1 = new DiaTrabalho(20241128, novaData1);
+            DiaTrabalho diaTrabalho2 = new DiaTrabalho(20241129, novaData2);
+
+            //adiciona os pedidos na datas
             diaTrabalho1.adicionarPedido(pedidos2);
+            diatrabalhodao.adicionarDiaTrabalho(diaTrabalho1);
+            diaTrabalho2.adicionarPedido(pedidos2);
+            diaTrabalho2.adicionarPedido(pedidos1);
+            diatrabalhodao.adicionarDiaTrabalho(diaTrabalho2);
             
-             
-            System.out.println("Pedidos do dia " + diaTrabalho1.getData() + ":");
-                for (Pedidos pedido : diaTrabalho1.getPedidos()) {
-                    System.out.println("Pedido ID: " + pedido.getId());
+            //lista os pedidos de um dia específico
+            System.out.println("***Pedidos do dia***\n" + diaTrabalho2.getData() + ":\n");
+                for (Pedidos pedido : diaTrabalho2.getPedidos()) {
+                    System.out.println("\nPedidos Completos: \n" + pedido.getId() + "," + pedido.getPizzas() + "Cliente:" + pedido.getCliente());
             }
-             
-        }
+            
+            //listar as datas -- TENTAR SIMPLIFICAR ISSO
+            System.out.println("***Datas com Pedidos***");
+            
+            List<LocalDate> datas = diatrabalhodao.listarDatas();
+            
+            for (LocalDate data : datas) {
+                System.out.println("Data: " + data);       
+            }
+    }
         
 } 
+
+
+
+
+
