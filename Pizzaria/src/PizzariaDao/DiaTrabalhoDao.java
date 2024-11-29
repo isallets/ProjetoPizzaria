@@ -45,7 +45,7 @@ public class DiaTrabalhoDao {
         String report="";
         for(DiaTrabalho d: databaseDiaTrabalho){
             report+=d.getId()+"\n";
-            report+=d.getDia()+"\n";
+            report+=d.getData()+"\n";
             report+=d.getPedidos()+"\n";
         }
         return report;

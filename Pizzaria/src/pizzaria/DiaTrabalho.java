@@ -8,17 +8,22 @@ import java.util.List;
 
 public class DiaTrabalho {
     private int id;
-    private LocalDate dia = LocalDate.of(2024, 11, 28);
+    private LocalDate data = LocalDate.of(2024, 11, 28);
     private List<Pedidos> pedidos;
     
     public DiaTrabalho(int id) {
         this.id = id;
         this.pedidos = new ArrayList<>();
     }
-   
+    /*
+    public DiaTrabalho(int id, LocalDate data) {
+        this.id = id;
+        this.data = data;
+    }
+   */
     public DiaTrabalho(int id, List<Pedidos> pedidos) {
         this.id = id;
-        this.pedidos = pedidos;
+        this.pedidos = new ArrayList<>();
     }
 
     public int getId() {
@@ -29,12 +34,12 @@ public class DiaTrabalho {
         this.id = id;
     }
 
-    public LocalDate getDia() {
-        return dia;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setDia(LocalDate dia) {
-        this.dia = dia;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
     
     public List<Pedidos> getPedidos() {
@@ -46,9 +51,15 @@ public class DiaTrabalho {
     }
     
     //PARA EU CONSEGUIR ADICIONAR O PEDIDO NA DATA
-    public void adicionarPedido(Pedidos pedidos){
-        
+    public void adicionarPedido(Pedidos pedido) {
+        this.pedidos.add(pedido); 
     }
     
+
+    
+    public LocalDate getDataDoPedido(Pedidos pedido) {
+        this.pedidos.contains(pedido);
+            return this.data; 
+    }
     
 }
